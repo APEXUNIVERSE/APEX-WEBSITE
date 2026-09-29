@@ -11,7 +11,6 @@ import FluidBackground from './components/FluidBackground';
 import GradientText from './components/GlitchText';
 import CustomCursor from './components/CustomCursor';
 import ArtistCard from './components/ArtistCard';
-import CollaboratorCard from './components/CollaboratorCard';
 import ThreePlanet from './components/ThreePlanet';
 import MagnetText from './components/MagnetText';
 import ThreeDWeaponCanvas from './components/ThreeDWeaponCanvas';
@@ -25,17 +24,8 @@ const LINEUP: Artist[] = [
     genre: 'Founder', 
     day: 'FOUNDER', 
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop',
-    description: 'The visionary founder of Apex Squad. Expert sniper, tactical strategist, and community leader who established the Apex Arena in 2025.',
+    description: 'The visionary founder of Apex Universe. Expert sniper, tactical strategist, and community leader who established the Apex Arena in 2025.',
     discord: 'indiansniper_'
-  },
-  { 
-    id: '2', 
-    name: 'Overlord', 
-    genre: 'Squad Leader', 
-    day: 'LEADER', 
-    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop',
-    description: 'Leading our front lines with absolute precision. Coordinates squad operations, competitive scrims, and guides members to victory.',
-    discord: 'overlord022316'
   },
   { 
     id: '3', 
@@ -79,17 +69,8 @@ const LINEUP: Artist[] = [
     genre: 'Tournaments Admin', 
     day: 'TOURNAMENTS', 
     image: 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?q=80&w=1000&auto=format&fit=crop',
-    description: 'Handles tournament bracket administration, rule enforcement, and live score tracking during seasonal Apex Squad championships.',
+    description: 'Handles tournament bracket administration, rule enforcement, and live score tracking during seasonal Apex Universe championships.',
     discord: 'reaper_tourneys'
-  },
-  { 
-    id: '8', 
-    name: 'Crisis', 
-    genre: 'Community Lead', 
-    day: 'COMMUNITY', 
-    image: 'https://images.unsplash.com/photo-1548685913-fe6574340a49?q=80&w=1000&auto=format&fit=crop',
-    description: 'Drives community engagement, designs social events, and manages the official squad recruitment pipelines.',
-    discord: 'phoenix_squad'
   },
   { 
     id: '9', 
@@ -115,7 +96,7 @@ const LINEUP: Artist[] = [
     genre: 'Vanguard Warden', 
     day: 'WARDEN', 
     image: 'https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=1000&auto=format&fit=crop',
-    description: 'The shield of Apex Squad. A frontline defender and tactical guardian who stands unwavering against any enemy squad onslaught.',
+    description: 'The shield of Apex Universe. A frontline defender and tactical guardian who stands unwavering against any enemy squad onslaught.',
     discord: 'ryvoric_warden'
   },
 ];
@@ -128,26 +109,6 @@ const sectionFadeIn = {
     y: 0, 
     filter: "blur(0px)",
     transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } 
-  }
-};
-
-const cardStaggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-    }
-  }
-};
-
-const cardStaggerItem = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
   }
 };
 
@@ -521,10 +482,15 @@ const App: React.FC = () => {
 
       {/* Navigation */}
       <nav className="absolute top-9 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-gradient-to-b from-[#080201] via-[#0a0201]/85 to-transparent transition-all duration-300">
-        <div className="z-50 cursor-pointer">
+        <div className="z-50 cursor-pointer flex items-center gap-2.5">
+          <img 
+            src="/logo.jpg" 
+            alt="Apex Universe Logo" 
+            className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-[#8c1007] object-cover shadow-[0_0_12px_rgba(220,38,38,0.5)]" 
+          />
           <MagnetText 
-            text="APEX SQUAD" 
-            className="text-lg md:text-xl font-bold tracking-tighter"
+            text="APEX UNIVERSE" 
+            className="text-base md:text-lg font-bold tracking-tighter"
           />
         </div>
         
@@ -548,14 +514,24 @@ const App: React.FC = () => {
             </a>
           ))}
         </div>
-        <button 
-          onClick={() => scrollToSection('tickets')}
-          className="hidden md:inline-block border border-[#8c1007]/60 px-6 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#8c1007] hover:text-[#fff0c4] transition-all duration-300 text-[#fff0c4] cursor-pointer bg-transparent"
-          data-hover="true"
-          data-cursor-text="Join Our Community"
-        >
-          Join Our Discord
-        </button>
+        <div className="hidden md:flex items-center gap-3">
+          <button 
+            onClick={() => scrollToSection('tickets')}
+            className="border border-[#8c1007]/60 px-5 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#8c1007] hover:text-[#fff0c4] transition-all duration-300 text-[#fff0c4] cursor-pointer bg-transparent"
+            data-hover="true"
+            data-cursor-text="Join Our Community"
+          >
+            Join Discord
+          </button>
+          <button 
+            onClick={() => scrollToSection('tickets')}
+            className="border border-[#25D366]/60 px-5 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#25D366] hover:text-black transition-all duration-300 text-[#25D366] cursor-pointer bg-[#25D366]/10 font-mono"
+            data-hover="true"
+            data-cursor-text="Join WhatsApp"
+          >
+            WhatsApp
+          </button>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <button 
@@ -575,6 +551,16 @@ const App: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-[#060100]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden"
           >
+            <div className="flex flex-col items-center gap-2 mb-2">
+              <img 
+                src="/logo.jpg" 
+                alt="Apex Universe Logo" 
+                className="w-16 h-16 rounded-full border-2 border-[#8c1007] object-cover shadow-[0_0_20px_rgba(220,38,38,0.5)]" 
+              />
+              <span className="text-xl font-heading font-black text-white tracking-widest uppercase">
+                APEX UNIVERSE
+              </span>
+            </div>
             {[
               { name: 'METAS', url: 'https://discord.com/channels/1511457449360752690/1511758689009270785' },
               { name: 'Clips & Streams', url: 'https://discord.com/channels/1511457449360752690/1511457452481187883' },
@@ -591,15 +577,26 @@ const App: React.FC = () => {
                 {item.name}
               </a>
             ))}
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                scrollToSection('tickets');
-              }}
-              className="mt-8 border border-[#8c1007] px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase bg-[#8c1007] text-[#fff0c4] shadow-lg"
-            >
-              Join Our Discord
-            </button>
+            <div className="flex flex-col gap-3 w-full px-8 max-w-xs mt-6">
+              <button 
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  scrollToSection('tickets');
+                }}
+                className="w-full border border-[#8c1007] px-6 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase bg-[#8c1007] text-[#fff0c4] shadow-lg text-center"
+              >
+                Join Discord
+              </button>
+              <button 
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  scrollToSection('tickets');
+                }}
+                className="w-full border border-[#25D366] px-6 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase bg-[#25D366]/20 text-[#25D366] hover:bg-[#25D366] hover:text-black transition-colors shadow-lg text-center"
+              >
+                Join WhatsApp
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -627,8 +624,8 @@ const App: React.FC = () => {
             {/* Main Title with Letter Magnetism */}
             <div className="relative w-full flex lg:justify-start justify-center items-center mb-6">
               <MagnetText 
-                text="APEX SQUAD" 
-                className="text-[12vw] sm:text-[10vw] lg:text-[5.5vw] leading-[0.9] font-black tracking-tighter" 
+                text="APEX UNIVERSE" 
+                className="text-[10vw] sm:text-[9vw] lg:text-[4.8vw] leading-[0.9] font-black tracking-tighter" 
               />
             </div>
             
@@ -647,22 +644,6 @@ const App: React.FC = () => {
             >
               The definitive hub for top-tier gameplay. Join tactical squads, review advanced metas, submit premium clips, and compete alongside elite gamers in the Apex Arena.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 1 }}
-              className="mt-8 flex gap-4"
-            >
-              <button 
-                onClick={() => scrollToSection('tickets')}
-                className="border-2 border-[#8c1007] hover:bg-[#8c1007] hover:text-[#fff0c4] text-[#fff0c4] px-8 py-3.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 bg-transparent hover:shadow-[0_0_20px_rgba(140,16,7,0.3)]"
-                data-hover="true"
-                data-cursor-text="JOIN DISCORD"
-              >
-                Join Discord
-              </button>
-            </motion.div>
           </motion.div>
 
           {/* Right Column: 3D Planet */}
@@ -708,8 +689,26 @@ const App: React.FC = () => {
         </div>
       </header>
 
+      {/* APEX UNIVERSE BANNER SHOWCASE */}
+      <section className="relative z-10 pt-12 md:pt-16 pb-6 px-4 md:px-8 max-w-6xl mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeIn}
+          className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-[#8c1007]/50 shadow-[0_0_60px_rgba(140,16,7,0.35)] group bg-black/60"
+        >
+          <img 
+            src="/banner.png" 
+            alt="Apex Universe Gaming Community Banner" 
+            className="w-full h-auto object-cover transform group-hover:scale-[1.015] transition-transform duration-700 block" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060100]/60 via-transparent to-transparent pointer-events-none" />
+        </motion.div>
+      </section>
+
       {/* MODERATORS SECTION (Lineup) */}
-      <section id="lineup" className="relative z-10 pt-10 md:pt-14 pb-4 md:pb-6 overflow-hidden">
+      <section id="lineup" className="relative z-10 pt-6 md:pt-10 pb-4 md:pb-6 overflow-hidden">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -721,7 +720,7 @@ const App: React.FC = () => {
             className="flex flex-col md:flex-row justify-between items-end mb-2 md:mb-4 px-4"
           >
              <h2 className="text-5xl md:text-8xl font-heading font-bold uppercase leading-[0.9] drop-shadow-lg break-words w-full md:w-auto">
-              <GradientText text="APEX SQUAD" className="text-5xl md:text-8xl" /> <br/> 
+              <GradientText text="APEX UNIVERSE" className="text-5xl md:text-8xl" /> <br/> 
               <GradientText text="MODERATORS" className="text-5xl md:text-8xl" />
              </h2>
           </motion.div>
@@ -785,73 +784,6 @@ const App: React.FC = () => {
           </div>
         </motion.div>
       </section>
-
-      {/* COLLABORATORS SECTION */}
-      <section id="experience" className="relative z-10 pt-4 md:pt-6 pb-6 md:pb-8 overflow-hidden">
-        {/* Decorative blurred circle */}
-        <div className="absolute top-1/2 right-[-20%] w-[50vw] h-[50vw] bg-[#8c1007]/10 rounded-full blur-[40px] pointer-events-none will-change-transform" style={{ transform: 'translateZ(0)' }} />
-
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="max-w-7xl mx-auto px-6 relative z-10"
-        >
-          <motion.div 
-            variants={sectionFadeIn}
-            className="text-center mb-16 max-w-3xl mx-auto"
-          >
-            <h2 className="text-4xl md:text-7xl font-heading font-bold mb-6 leading-tight">
-              <GradientText text="OUR COLLABORATORS" className="text-4xl md:text-7xl" />
-            </h2>
-            <p className="text-lg md:text-xl text-gray-200 font-light leading-relaxed drop-shadow-md">
-              Apex Squad is built alongside premium content creators, streamers, and competitive legends. Meet our official collaborators and see their feedback about the community.
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            variants={cardStaggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {[
-              { 
-                icon: Youtube, 
-                title: 'Hammer Singh', 
-                desc: '"The absolute best gaming clan out there. Non-stop action, incredible teammates, and unmatched vibes!"',
-                channel: 'https://www.youtube.com/@HammerSinghCOD' 
-              },
-              { 
-                icon: Youtube, 
-                title: 'Pingos Gaming', 
-                desc: '"Joined since day one. The events are insanely coordinated, and the community is like a second family."',
-                channel: 'https://www.youtube.com/@Pingosgaming1' 
-              },
-              { 
-                icon: Youtube, 
-                title: 'Snipe Dogg', 
-                desc: '"If you are serious about Warzone and Valorant, this is the squad you want to be running with. Elite class."',
-                channel: 'https://www.youtube.com/@SNIPE-DOGG' 
-              },
-              { 
-                icon: Youtube, 
-                title: 'Ryvoric', 
-                desc: '"Absolutely premier gaming events and tactical squad coordination. The community\'s energy and passion is unrivaled!"',
-                channel: 'https://www.youtube.com/@Ryvoric' 
-              },
-            ].map((feature, i) => (
-              <motion.div key={i} variants={cardStaggerItem} className="h-full">
-                <CollaboratorCard 
-                  icon={feature.icon}
-                  title={feature.title}
-                  desc={feature.desc}
-                  channel={feature.channel}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-      </section>
-
       {/* VIDEO OF THE WEEK SECTION */}
       <section id="video-of-the-week" className="relative z-10 pt-6 md:pt-8 pb-16 md:pb-24 overflow-hidden">
         <motion.div 
@@ -881,7 +813,7 @@ const App: React.FC = () => {
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/15 bg-black group/video">
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/ts35dysMOic?rel=0&modestbranding=1"
+                  src="https://www.youtube.com/embed/cSf8s4fKds0?rel=0&modestbranding=1"
                   title="Video of the Week Player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -896,7 +828,7 @@ const App: React.FC = () => {
                     <span className="text-xs font-mono text-gray-400 uppercase tracking-widest">Featured High-Tier Gameplay</span>
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold font-heading text-white">
-                    Apex Squad Live Stream & Community Showcase
+                    Apex Universe Live Stream & Community Showcase
                   </h3>
                 </div>
                 <div className="flex items-center gap-3">
@@ -1144,10 +1076,10 @@ const App: React.FC = () => {
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="text-2xl md:text-3xl font-heading font-bold mb-2">
-                      <GradientText text="CONTACT US THROUGH DISCORD" className="text-2xl md:text-3xl" />
+                      <GradientText text="JOIN OUR COMMUNITY" className="text-2xl md:text-3xl" />
                     </h3>
                     <div className="text-xs font-mono text-[#fff0c4] mb-6 tracking-widest uppercase">
-                       OFFICIAL INVITE PORTAL
+                       OFFICIAL INVITE PORTALS
                     </div>
                     
                     <ul className="space-y-4 text-sm text-gray-200">
@@ -1171,14 +1103,28 @@ const App: React.FC = () => {
                   </div>
                 </div>
                 
-                <a 
-                  href="https://discord.gg/YvGcHHXtw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-4 text-sm font-bold uppercase tracking-[0.2em] border border-[#8c1007]/40 bg-[#8c1007]/15 hover:bg-[#8c1007] hover:text-[#fff0c4] transition-all duration-300 mt-8 text-center rounded-xl text-[#fff0c4] hover:shadow-[0_0_20px_rgba(140,16,7,0.4)] block"
-                >
-                  Click here to join
-                </a>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                  <a 
+                    href="https://discord.gg/GEAbYcaBuA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-4 text-xs md:text-sm font-bold uppercase tracking-[0.15em] border border-[#8c1007]/50 bg-[#8c1007]/20 hover:bg-[#8c1007] hover:text-[#fff0c4] transition-all duration-300 text-center rounded-xl text-[#fff0c4] hover:shadow-[0_0_20px_rgba(140,16,7,0.4)] flex items-center justify-center gap-2 decoration-none font-mono"
+                    data-hover="true"
+                    data-cursor-text="JOIN DISCORD"
+                  >
+                    <MessageSquare className="w-4 h-4" /> Join Discord
+                  </a>
+                  <a 
+                    href="https://chat.whatsapp.com/DsSMsCcONMj2TA3R8glQkv?s=sw&p=i&mlu=4&ilr=4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-4 text-xs md:text-sm font-bold uppercase tracking-[0.15em] border border-[#25D366]/50 bg-[#25D366]/15 hover:bg-[#25D366] hover:text-black transition-all duration-300 text-center rounded-xl text-[#25D366] hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] flex items-center justify-center gap-2 decoration-none font-mono"
+                    data-hover="true"
+                    data-cursor-text="JOIN WHATSAPP"
+                  >
+                    Join WhatsApp
+                  </a>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -1187,16 +1133,24 @@ const App: React.FC = () => {
         {/* FOOTER - nested inside for seamless background video flow */}
         <footer className="relative z-10 h-9 w-full bg-gradient-to-t from-[#060100] to-[#080201] border-t border-white/5 flex items-center justify-center overflow-hidden">
           <div className="w-full max-w-7xl px-6 md:px-12 flex items-center justify-between h-full">
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center gap-2.5">
+               <img 
+                 src="/logo.jpg" 
+                 alt="Apex Universe Logo" 
+                 className="w-5 h-5 rounded-full border border-[#8c1007] object-cover" 
+               />
                <MagnetText 
-                 text="APEX SQUAD" 
+                 text="APEX UNIVERSE" 
                  className="text-xs md:text-sm font-bold tracking-tighter"
                />
             </div>
             
-            <div className="flex items-center justify-end">
-              <a href="https://discord.gg/YvGcHHXtw" target="_blank" rel="noopener noreferrer" className="text-[#fff0c4] hover:text-[#fff0c4]/80 font-bold uppercase text-[10px] md:text-xs tracking-widest transition-colors cursor-pointer decoration-none font-mono" data-hover="true" data-cursor-text="JOIN SERVER">
-                Join Discord Server
+            <div className="flex items-center justify-end gap-5">
+              <a href="https://chat.whatsapp.com/DsSMsCcONMj2TA3R8glQkv?s=sw&p=i&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:text-[#25D366]/80 font-bold uppercase text-[10px] md:text-xs tracking-widest transition-colors cursor-pointer decoration-none font-mono flex items-center gap-1" data-hover="true" data-cursor-text="JOIN WHATSAPP">
+                WhatsApp
+              </a>
+              <a href="https://discord.gg/GEAbYcaBuA" target="_blank" rel="noopener noreferrer" className="text-[#fff0c4] hover:text-[#fff0c4]/80 font-bold uppercase text-[10px] md:text-xs tracking-widest transition-colors cursor-pointer decoration-none font-mono" data-hover="true" data-cursor-text="JOIN SERVER">
+                Discord Server
               </a>
             </div>
           </div>
